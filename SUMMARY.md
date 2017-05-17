@@ -10,7 +10,7 @@
 ## Tools
 
 * [python](tools/python.md)
-* GDB
+* [GDB](tools/gdb.md)
 
 ## Wargames
 
