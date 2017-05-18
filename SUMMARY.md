@@ -5,6 +5,7 @@
   * Buffer overflow
   * Format string
   * [Assembly lang](system/assembly-lang.md)
+  * [PLT and GOT](system/plt-and-got.md)
 * [Network](network.md)
 * [Web](web.md)
 
