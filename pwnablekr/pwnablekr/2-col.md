@@ -1,5 +1,4 @@
-# col
-
+# collision
 ## 문제
 
 > Daddy told me about cool MD5 hash collision today.
