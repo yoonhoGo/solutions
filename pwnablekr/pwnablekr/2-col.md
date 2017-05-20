@@ -1,4 +1,4 @@
-# fd
+# col
 
 ## 문제
 
@@ -52,9 +52,8 @@ check\_password 함수를 분석하여 hashcode와 동일한 코드가 나오도
 
 ## 힌트
 
-`python -c "print '내용'"`
+* [python -c "print '내용'"](https://goyunho.gitbooks.io/solutions/content/tools/python.html)
 
 ## 공략
-
 
 
