@@ -1,11 +1,10 @@
 # collision
+
 ## 문제
 
 > Daddy told me about cool MD5 hash collision today.
 >
 > I wanna do something like that too!
->
->
 >
 > ssh col@pwnable.kr -p2222 \(pw:guest\)
 
@@ -16,32 +15,32 @@
 #include <string.h>
 unsigned long hashcode = 0x21DD09EC;
 unsigned long check_password(const char* p){
-	int* ip = (int*)p;
-	int i;
-	int res=0;
-	for(i=0; i<5; i++){
-		res += ip[i];
-	}
-	return res;
+    int* ip = (int*)p;
+    int i;
+    int res=0;
+    for(i=0; i<5; i++){
+        res += ip[i];
+    }
+    return res;
 }
 
 int main(int argc, char* argv[]){
-	if(argc<2){
-		printf("usage : %s [passcode]\n", argv[0]);
-		return 0;
-	}
-	if(strlen(argv[1]) != 20){
-		printf("passcode length should be 20 bytes\n");
-		return 0;
-	}
+    if(argc<2){
+        printf("usage : %s [passcode]\n", argv[0]);
+        return 0;
+    }
+    if(strlen(argv[1]) != 20){
+        printf("passcode length should be 20 bytes\n");
+        return 0;
+    }
 
-	if(hashcode == check_password( argv[1] )){
-		system("/bin/cat flag");
-		return 0;
-	}
-	else
-		printf("wrong passcode.\n");
-	return 0;
+    if(hashcode == check_password( argv[1] )){
+        system("/bin/cat flag");
+        return 0;
+    }
+    else
+        printf("wrong passcode.\n");
+    return 0;
 }
 ```
 
@@ -52,7 +51,9 @@ check\_password 함수를 분석하여 hashcode와 동일한 코드가 나오도
 ## 힌트
 
 * [python -c "print '내용'"](https://goyunho.gitbooks.io/solutions/content/tools/python.html)
+* 리틀엔디안이 무엇인지 알아보기 
 
 ## 공략
+
 
 
