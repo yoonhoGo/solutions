@@ -10,7 +10,7 @@
 
 ## 소스
 
-```{.c}
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -44,7 +44,10 @@ ls 명령어로 현재위치에 있는 파일 확인
 
 cat을 사용해서 fd.c 파일 실행\(flag파일은 권한이 안됨\)
 
-```{.c}
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 char buf[32];
 int main(int argc, char* argv[], char* envp[])
 {
@@ -73,10 +76,12 @@ read의 첫번째 인자부분 -&gt; 입력을 가져올 file descriptor를 넣�
 **open 시스템 콜로 얻은 file descriptor나 0,1,2를 넣어 standard input/output/error로 사용가능**
 
 > * file descriptor\(파일 기술자\)
+>
 >   * 운영체제가 만든 파일 또는 소켓을 지칭하기 위해 부여한 숫자
 >   * 운영체제가 파일관리에 필요로하는 파일정보를 갖고있음
 >
-> * standard input/output/error : 표준 입력/출력/에러 
+> * standard input/output/error : 표준 입력/출력/에러
+>
 >   * input -&gt; 키보드를 통한 입력
 >   * output -&gt; 단말기 화면의 출력
 >   * error -&gt; 에러출력
@@ -88,6 +93,4 @@ read의 첫번째 인자값을 입력해야 하는데 int fd = atoi\( argv\[1\] 
 LETMEWIN을 입력하기에 가장 간편한 방법은 키보드입력이며, 표준입력은 0이 할당되어야 함
 
 따라서 0+4660=4660 이기때문에 ./fd 4660 입력후 LETMEWIN 입력하면 flag 파일의 내용이 출력됨
-
-
 
