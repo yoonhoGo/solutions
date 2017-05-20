@@ -10,7 +10,7 @@
 
 ## 소스
 
-```
+```{.c}
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -44,51 +44,33 @@ ls 명령어로 현재위치에 있는 파일 확인
 
 cat을 사용해서 fd.c 파일 실행\(flag파일은 권한이 안됨\)
 
-`char buf[32];`
-
-`int main(int argc, char* argv[], char* envp[])`
-
-`{`
-
-`    if(argc<2)`
-
-`    {`
-
-`        printf("pass argv[1] a number\n");`
-
-`        return 0;`
-
-`    }`
-
-`    int fd = atoi( argv[1] ) - 0x1234; //atoi(i=integer) : 문자열을 정수형으로 변환 -> argv[1](입력받은 첫번째 인자)를 숫자로 바꿔 0x1234를 뺀 값을 저장`
-
-`    int len = 0;`
-
-`    len = read(fd, buf, 32); // read : 문자열을 buf로 읽어올때 사용 -> read(인자1,인자2,인자3) / 인자1 - file descriptor의 값 / 인자2 - 읽은 데이터를 저장할 버퍼 / 인자3 - 얼만큼 읽을지 전달`
-
-`    if(!strcmp("LETMEWIN\n", buf)) //!strcmp : 문자열 비교 -> strcmp(비교할 문자열1, 비교할 문자열2) / 앞에 !(not)은 strcmp함수가 문자열이 같으면 0을 반환하기 때문에 붙임`
-
-`    {`
-
-`        printf("good job :)\n");`
-
-`        system("/bin/cat flag");`
-
-`        exit(0);`
-
-`        /*buf 값이 LETMEWIN 이면 "good job:)"과 함께 현재 권한으로 열수 없었던 flag 파일 출력*/`
-
-`    }`
-
-`    printf("learn about Linux file IO\n"); //buf값이 올바르지 않은 경우`
-
-`    return 0;`
-
-`}`
+```{.c}
+char buf[32];
+int main(int argc, char* argv[], char* envp[])
+{
+    if(argc<2)
+    {
+        printf("pass argv[1] a number\n");
+        return 0;
+    }
+    int fd = atoi( argv[1] ) - 0x1234; //atoi(i=integer) : 문자열을 정수형으로 변환 -> argv[1](입력받은 첫번째 인자)를 숫자로 바꿔 0x1234를 뺀 값을 저장
+    int len = 0;
+    len = read(fd, buf, 32); // read : 문자열을 buf로 읽어올때 사용 -> read(인자1,인자2,인자3) / 인자1 - file descriptor의 값 / 인자2 - 읽은 데이터를 저장할 버퍼 / 인자3 - 얼만큼 읽을지 전달
+    if(!strcmp("LETMEWIN\n", buf)) //!strcmp : 문자열 비교 -> strcmp(비교할 문자열1, 비교할 문자열2) / 앞에 !(not)은 strcmp함수가 문자열이 같으면 0을 반환하기 때문에 붙임
+    {
+        printf("good job :)\n");
+        system("/bin/cat flag");
+        exit(0);
+        /*buf 값이 LETMEWIN 이면 "good job:)"과 함께 현재 권한으로 열수 없었던 flag 파일 출력*/
+    }
+    printf("learn about Linux file IO\n"); //buf값이 올바르지 않은 경우
+    return 0;
+}
+```
 
 read의 첫번째 인자부분 -&gt; 입력을 가져올 file descriptor를 넣는곳
 
-**open 시스템 콜로 얻은 file descriptor나 0,1,2를 넣어 standard input/output/error로 사용가능**
+**open 시스템 콜로 얻은 file descriptor나 0,1,2를 넣어 standard input/output/error로 사용가능**
 
 > * file descriptor\(파일 기술자\)
 >   * 운영체제가 만든 파일 또는 소켓을 지칭하기 위해 부여한 숫자
