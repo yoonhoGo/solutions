@@ -1,4 +1,4 @@
-# 그림으로 간단히 보기
+# 흐름을 그림으로 간단히 보기
 출처 : [http://cfile28.uf.tistory.com](http://cfile28.uf.tistory.com)
 ### GOT를 처음 참조할 때
 ![](http://cfile28.uf.tistory.com/image/2117054757A5D63420BD21)
