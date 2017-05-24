@@ -1,3 +1,12 @@
+# 그림으로 간단히 보기
+출처 : [http://cfile28.uf.tistory.com](http://cfile28.uf.tistory.com)
+### GOT를 처음 참조할 때
+![](http://cfile28.uf.tistory.com/image/2117054757A5D63420BD21)
+### GOT에 주소가 저장된 후
+![](http://cfile21.uf.tistory.com/image/21717E4D57A5D7DC281CEB)
+
+---
+
 # PLT와 GOT 자세히 알기
 
 출처 : [https://bpsecblog.wordpress.com/2016/03/07/about\_got\_plt\_1/](https://bpsecblog.wordpress.com/2016/03/07/about_got_plt_1/)
