@@ -64,6 +64,7 @@ scanf의 취약점
 
 * plt와 got
 * exploit\(overwrite\)
+* 스택의 상황과 소스의 흐름을 잘 이해할 것
 
 ## 공략
 
