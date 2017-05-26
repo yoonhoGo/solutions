@@ -2,8 +2,8 @@
 
 * [Introduction](README.md)
 * [System](system.md)
-  * Buffer overflow
-  * Format string
+  * [Buffer overflow](system/buffer-overflow.md)
+  * [Format string](system/format-string.md)
   * [Assembly lang](system/assembly-lang.md)
   * [PLT and GOT](system/plt-and-got.md)
 * [Network](network.md)
