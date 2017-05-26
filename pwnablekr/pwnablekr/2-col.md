@@ -100,7 +100,7 @@ hashcode 값 21DD09EC 를 res 값과 같게 해줘야 하고 res는 다섯 번�
 
 이 값을 리틀 엔디언 표기법에 의해 \x06\xC5\xCE\xC8 이 아닌 역순으로 \xC8\xCE\xC5\x06 으로 작성하면 된다.
 
-![](/assets/캡처2.PNG)
+
 
 ---
 
