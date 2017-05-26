@@ -50,7 +50,7 @@ check\_password 함수를 분석하여 hashcode와 동일한 코드가 나오도
 
 ## 힌트
 
-* [python -c "print '내용'"](https://goyunho.gitbooks.io/solutions/content/tools/python.html)
+* [python -c "print '내용'"](/tools/python.md)
 * 리틀엔디안이 무엇인지 알아보기 
 * 계산기와 익숙해지기 
 
