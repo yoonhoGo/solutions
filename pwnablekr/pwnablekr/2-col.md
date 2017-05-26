@@ -65,7 +65,7 @@ if(hashcode == check_password( argv[1] )){
 }
 ```
 
-입력 받은 값이 20바이트를 만족하여야 함.
+입력 받은 값이 20바이트를 만족하여야 한다.
 
 ```c
 if(strlen(argv[1]) != 20){
@@ -74,7 +74,7 @@ if(strlen(argv[1]) != 20){
 }
 ```
 
-check\_password 함수에서 for문을 보면 입력받은 20바이트를 4바이트씩 다섯 번 res에 값을 입력 후 반환함.
+check\_password 함수에서 for문을 보면 입력받은 20바이트를 4바이트씩 다섯 번 res에 값을 입력 후 반환한다.
 
 ```c
 unsigned long check_password(const char* p){
@@ -87,6 +87,20 @@ unsigned long check_password(const char* p){
         return res;
 }
 ```
+
+hashcode 값 21DD09EC 를 res 값과 같게 해줘야 하고 res는 다섯 번으로 나눠 더했기에 hashcode 값도 5로 나눠준다.
+
+21DD09EC / 5 = 6C5CEC8, 이 값은 다시 5로 곱한다.
+
+6C5CEC8 \* 5 = 21DD09E8, 이 값은 hashcode에 4가 모자라다
+
+그렇기에 6C5CEC8 \* 4에 6C5CEC8를 더하되 모자란 4를 추가해서 더해주면 된다.
+
+6C5CEC8 \* 4 + 6C5CECC = 21DD09EC
+
+
+
+
 
 
 
