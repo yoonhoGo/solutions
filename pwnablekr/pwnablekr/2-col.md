@@ -56,15 +56,47 @@ check\_password 함수를 분석하여 hashcode와 동일한 코드가 나오도
 
 ## 공략
 
+해당 소스는 hashcode\(0x21DD09EC\)와 입력받은 check\_password 함수 內 res 값이 같으면 flag 값을 가져오게 되며
+
+```c
+if(hashcode == check_password( argv[1] )){
+        system("/bin/cat flag");
+        return 0;
+}
+```
+
+입력 받은 값이 20바이트를 만족하여야 함.
+
+```c
+if(strlen(argv[1]) != 20){
+        printf("passcode length should be 20 bytes\n");
+        return 0;
+}
+```
+
+check\_password 함수에서 for문을 보면 입력받은 20바이트를 4바이트씩 다섯 번 res에 값을 입력 후 반환함.
+
+```c
+unsigned long check_password(const char* p){
+        int* ip = (int*)p;
+        int i;
+        int res=0;
+        for(i=0; i<5; i++){
+                res += ip[i];
+        }
+        return res;
+}
+```
+
+
+
 
 
 반복문에 사용자가 입력한 **20바이트**를 **4바이트** 단위로 다섯번씩 읽어들여 **res**에 넣게 끔 되어있다.
 
 즉, **hashcode값** **0x21DD09EC이 RES와 동일**하면 **clear **하게 되어있다.
 
-**21DD09EC / 5 = 6C5CEC8  , 6C5CeC9 \*5 = 21DD09E8 **해쉬코드 랑 비교하면 **4**가 모자란다. 
+**21DD09EC / 5 = 6C5CEC8  , 6C5CeC9 \*5 = 21DD09E8 **해쉬코드 랑 비교하면 **4**가 모자란다.
 
-**6C5CEC8 \* 4 + \(6C5CeC9 + 4\)**를 해주면 된다. 
-
-
+**6C5CEC8 \* 4 + \(6C5CeC9 + 4\)**를 해주면 된다.
 
