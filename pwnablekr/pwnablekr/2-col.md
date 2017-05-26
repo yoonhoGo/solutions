@@ -52,8 +52,19 @@ check\_password 함수를 분석하여 hashcode와 동일한 코드가 나오도
 
 * [python -c "print '내용'"](https://goyunho.gitbooks.io/solutions/content/tools/python.html)
 * 리틀엔디안이 무엇인지 알아보기 
+* 계산기와 익숙해지기 
 
 ## 공략
+
+
+
+반복문에 사용자가 입력한 **20바이트**를 **4바이트** 단위로 다섯번씩 읽어들여 **res**에 넣게 끔 되어있다.
+
+즉, **hashcode값** **0x21DD09EC이 RES와 동일**하면 **clear **하게 되어있다.
+
+**21DD09EC / 5 = 6C5CEC8  , 6C5CeC9 \*5 = 21DD09E8 **해쉬코드 랑 비교하면 **4**가 모자란다. 
+
+**6C5CEC8 \* 4 + \(6C5CeC9 + 4\)**를 해주면 된다. 
 
 
 
