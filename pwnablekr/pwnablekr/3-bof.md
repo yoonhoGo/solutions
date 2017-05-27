@@ -34,11 +34,11 @@ int main(int argc, char* argv[]){
 ```
 
 ## 취약점
-* 버퍼 오버플로우 취약점 
+* [버퍼 오버플로우 취약점](/system/buffer-overflow.md) 
 
 ## 힌트
-* GDB를 적극 활용 할 것
-* 스택의 구조와 변수의 위치를 잘 확인할 것
+* [GDB](/tools/gdb.md)를 적극 활용 할 것
+* [스택의 구조와 변수의 위치](/system.md)를 잘 확인할 것
 
 ## 공략
 
