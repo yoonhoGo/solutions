@@ -34,7 +34,7 @@ int main(int argc, char* argv[]){
 ```
 
 ## 취약점
-* [버퍼 오버플로우 취약점](/system/buffer-overflow.md) 
+* [버퍼 오버플로우 취약점](/system/Overflow.md) 
 
 ## 힌트
 * [GDB](/tools/gdb.md)를 적극 활용 할 것
