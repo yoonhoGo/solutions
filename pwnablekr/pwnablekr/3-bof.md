@@ -58,33 +58,22 @@ else{
 }
 ```
 
-
-
 * gdb로 main 함수를 보게 되면 0xdeadbeef를 인자로 받고 func함수를 호출함.
 
 ![](/assets/main.PNG)
 
-
-
 * func 함수로 보면 0x64f에서 입력받은 값을 ebp-0x2c 버퍼에 받고 gets 함수를 통해 overflowme에 저장함.
 * 아래 0x654에 CMP가 보이는데 이 부분이 소스의 IF부분으로 입력받은 값\(ebp+0x8\)과 0xcafebabe를 비교함.
 
-1.  값이 같지 않으면 JNE\(Jump Not Equal\)에 의해서 x66b로 이동 후 Nah.. 를 출력함.
-2.  값이 같을 경우,  system 함수 호출 후 /bin/sh 실행 후 종료함.
+* 값이 같지 않으면 JNE\(Jump Not Equal\)에 의해서 x66b로 이동 후 Nah.. 를 출력함.
+
+* 값이 같을 경우,  system 함수 호출 후 /bin/sh 실행 후 종료함.
 
 ![](/assets/func.PNG)
 
-
-
 cafebabe와 값을 일치하기 위해서는 overflowme라는 char형\(32 bytes\) 변수를 넘어서 할당되지 않은 부분에 데이터를 입력해야 함.
 
-overflowme 변수를 꽉 채워도 ebp-0xc 부분까지만 채워지므로 ebp+0x8까지가 SFP, RET, Dummy 값을 합한 공간으로 20bytes임을 확인할 수 있음.
+overflowme 변수를 꽉 채워도 ebp-0xc 부분까지만 채워지므로 ebp+0x8까지가 SFP\(EBP\), RET, Dummy 값을 합한 공간으로 20bytes임을 확인할 수 있음.
 
-
-
-이를 토대로 char형 32bytes, SFP, RET, Dummy 값의 20bytes를 합친 52bytes에 쓰레기 값을 대입해준 다음에 0xcafebabe를 입력해주면 값을 일치시킬 수 있음.
-
-
-
-
+이를 토대로 char형 32bytes, SFP\(EBP\), RET, Dummy 값의 20bytes를 합친 52bytes에 쓰레기 값을 대입해준 다음에 0xcafebabe를 입력해주면 값을 일치시킬 수 있음.
 
