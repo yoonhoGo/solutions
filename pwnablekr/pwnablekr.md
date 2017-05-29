@@ -2,10 +2,12 @@
 
 1. fd
 2. collision
+3. bof
 
 ## 진행중인 문제
 
-* bof
+* flag
+* passcode
 
 
 
