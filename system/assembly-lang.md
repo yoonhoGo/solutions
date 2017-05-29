@@ -9,7 +9,7 @@
 | CX\(Counter Register\) | 반복 명령어 사용시 반복 카운터로 사용. CX에 반복할 횟수를 지정해 놓고 반복 작업을 수행 |
 | DX\(Data Register\) | 입출력 포인터 값을 저장할때 사용 |
 | SI\(Source Index\) | 데이터 복사, 조작 시 Source Data\(원본\) 주소가 저장. SI 레지스터가 가리키는 주소의 데이터를 DI 레지스터가 가리키는 주소로 복사하는 용도로 많이 사용 |
-| DI\(Destination Index\) | 복사 작업 시 Destination\(목적지, 사본\)의 주소가 저장.주로 SI 레지스터가 가리키는 주소의 데이터가 복사 됨.  |
+| DI\(Destination Index\) | 복사 작업 시 Destination\(목적지, 사본\)의 주소가 저장.주로 SI 레지스터가 가리키는 주소의 데이터가 복사 됨. |
 | SP\(Stack Pointer\) | 하나의 스택 프레임의 끝 지점 주소가 저장. PUSH, POP 명령어에 따라서 SP의 값이 nByte\(거의 항상 4바이트\)씩 변한다. |
 | BP\(Base Pointer\) | 스택 프레임의 시작 지점 주소가 저장. 스택 프레임이 소멸 되지 않는 동안 BP의 값은 변하지 않음. 현재의 스택 프레임이소멸되면 이전에 사용하던 스택 프레임을 가리킴. |
 
@@ -31,7 +31,12 @@ SS\(Stack Segment\) : 스택 영역의 시작 주소를 저장
 
 # 참고 자료
 
-* http://securityfactory.tistory.com/182
+* [http://securityfactory.tistory.com/182](http://securityfactory.tistory.com/182)
 
+---
+
+# ARM 프로세스 asm
+[ARM infomation center > 4.0 버전 한국어 문서](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0204ik/index.html)
+
+---
 [^1]: 레지스터 이름 앞에 E가 붙으면 32bit\(Extended\), R은 64bit
-
