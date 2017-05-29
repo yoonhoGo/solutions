@@ -77,3 +77,11 @@ overflowme 변수를 꽉 채워도 ebp-0xc 부분까지만 채워지므로 ebp+0
 
 이를 토대로 char형 32bytes, SFP\(EBP\), RET, Dummy 값의 20bytes를 합친 52bytes에 쓰레기 값을 대입해준 다음에 0xcafebabe를 입력해주면 값을 일치시킬 수 있음.
 
+> 위의 복잡한 용어를 제외하고 단순히 메모리 주소로 계산해도 
+>
+> ebp-0x2c\(overflow 배열의 시작주소\)부터 ebp+0x8\(key 주소\)까지 
+>
+> 0x2c\(44\) + 0x8\(8\) = 52라는 계산이 나온다.
+
+
+
