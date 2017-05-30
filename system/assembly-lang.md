@@ -17,6 +17,16 @@
 
 \(E\)IP\(\(Extended\) Instruction Pointer\) : 다음에 실행해야 할 명령어가 존재하는 메모리 주소가 저장된다. 현재 명령어를 실행 완료한 후에 IP 레지스터에 저장되어 있는 주소에 위치한 명령어를 실행하게 된다. 실행 전 IP 레지스터에는 다음 실행해야 할 명령어가 존재하는 주소의 값이 저장된다.
 
+IR\(명령어 레지스터\) : 현재 수행 중인 명령어를 가지고 있다.
+
+MAR\(Memorry Address Register\) : 메모리로부터 읽어오거나 메모리에 쓰기 위한 주소를 가지고 있다.
+
+MBR\(Memorry Buffer Register\) : 메모리로부터 읽어온 데이터 또는 메모리에 써야할 데이터를 가지고 있다.
+
+I/O AR\(Input/Output Address Register\) : 입출력 장치에 따른 입출력 모듈의 주소를 가지고 있다.
+
+I/O BR\(Input/Output Buffer Register\) : 입출력 모듈과 프로세서 간의 데이터 교환을 위해 사용된다.
+
 ### 세그먼트 레지스터
 
 CS\(Code Segment\) : 코드 영역의 시작 주소를 저장
@@ -36,7 +46,10 @@ SS\(Stack Segment\) : 스택 영역의 시작 주소를 저장
 ---
 
 # ARM 프로세스 asm
-[ARM infomation center > 4.0 버전 한국어 문서](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0204ik/index.html)
+
+[ARM infomation center &gt; 4.0 버전 한국어 문서](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0204ik/index.html)
 
 ---
+
 [^1]: 레지스터 이름 앞에 E가 붙으면 32bit\(Extended\), R은 64bit
+
