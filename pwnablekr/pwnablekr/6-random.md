@@ -43,7 +43,7 @@ XOR 연산을 이용해서 KEY값을 구합니다.
 
 random 함수의 같은값이 나오는 취약점을 이용해서 풀이합니다.
 
-gdb 분석툴로 random 프로그램의 main함수 정보를 보면 eax에 random값을 저장하는것을 알 수 있습니다.
+gdb 분석툴로 random 프로그램의 main함수 정보를 보면 범용레지스터 eax에 random값을 저장하는것을 알 수 있습니다.
 
 ![](/assets/import11.png)
 
@@ -53,11 +53,7 @@ eax 에 저장된 레지스트리 정보를 보면
 
 0x6b8b4567 주소값이 저장되어있는것을 알 수 있습니다.
 
-XOR 연산을 통해 KEY값을 구해주면 됩니다. 
+XOR 연산을 통해 KEY값을 구해주면 됩니다.
 
 \(KEY = 0xdeadbeef ^ random\)
-
-
-
-
 
