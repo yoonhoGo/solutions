@@ -12,6 +12,8 @@ This is reversing task. all you need is binary
 
 ## 취약점
 
+* 바이너리 파일의 패킹 여부 확인 후 언패킹
+
 ## 공략
 
 * 링크의 파일을 다운받아 IDA Pro로 연다.
