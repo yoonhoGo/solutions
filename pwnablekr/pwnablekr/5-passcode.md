@@ -62,7 +62,7 @@ scanf의 취약점
 
 ## 힌트
 
-* plt와 got
+* [plt와 got](/system/plt-and-got.md)
 * exploit\(overwrite\)
 * 스택의 상황과 소스의 흐름을 잘 이해할 것
 

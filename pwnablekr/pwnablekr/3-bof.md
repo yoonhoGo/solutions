@@ -35,7 +35,7 @@ int main(int argc, char* argv[]){
 
 ## 취약점
 
-* [버퍼 오버플로우 취약점](/system/Overflow.md) 
+* [버퍼 오버플로우 취약점](/system/overflow.md)
 
 ## 힌트
 
