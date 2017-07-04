@@ -87,9 +87,7 @@ int main(int argc, char* argv[], char* envp[]){
 * stage 3:
 * stage 4:
 * stage 5:
-* script 작성시 홈폴더에는 저장이 안되므로
-	mkdir /tmp/임의디렉토리명
-으로 디렉토리를 만들어서 스크립트를 짭니다.
+* script 작성시 홈폴더에는 저장이 안되므로 `$mkdir /tmp/임의디렉토리명`으로 디렉토리를 만들어서 스크립트를 짭니다.
 * 마지막에 임의디렉토리에는 flag 파일이 없는 것을 고려하여야 합니다.
 * 힌트 사이트 : [https://werewblog.wordpress.com/2016/01/11/pwnable-kr-input/](https://werewblog.wordpress.com/2016/01/11/pwnable-kr-input/)
 
