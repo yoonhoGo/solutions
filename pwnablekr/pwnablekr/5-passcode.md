@@ -226,7 +226,52 @@ passcode2는 \[ebp-0xc\]부터 4byte
    1. 첫번째 호출이라면 GOT는 함수의 주소를 가지고 있지 않고 '어떤 과정'을 거쳐서 주소를 알아낸다.
    2. 두번째 호출부터는 첫번째 호출 때 알아낸 주소롤 바로 jmp한다.
 
-따라서 이때 PLT에서 GOT로 `jmp 주소`를 이용하면 기존의 흐름을 우회할 수 있습니다.
+따라서 이때 PLT에서 GOT로 `jmp 주소`를 이용하면 기존의 흐름을 우회할 수 있습니다. 
+
+```
+   0x0804858b <+39>:	mov    eax,ds:0x804a02c
+   0x08048590 <+44>:	mov    DWORD PTR [esp],eax
+==>0x08048593 <+47>:	call   0x8048430 <fflush@plt>
+   0x08048598 <+52>:	mov    eax,0x8048786
+   0x0804859d <+57>:	mov    DWORD PTR [esp],eax
+   0x080485a0 <+60>:	call   0x8048420 <printf@plt>
+   0x080485a5 <+65>:	mov    eax,0x8048783
+```
+
+fflush의 plt를 보면 0x8048430 주소를 call하는 것을 볼 수 있다.
+
+```
+(gdb) x/3i 0x8048430
+   0x8048430 <fflush@plt>:	jmp    DWORD PTR ds:0x804a004
+   0x8048436 <fflush@plt+6>:	push   0x8
+   0x804843b <fflush@plt+11>:	jmp    0x8048410
+```
+
+call 된 fflush plt를 보면 0x804a004로 jmp 한다. 여기가 fflush 주소를 가져오는 GOT 주소이다.
+
+```
+(gdb) x/i 0x804a004
+   0x804a004 <fflush@got.plt>:	test   BYTE PTR ss:[eax+ecx*1],al
+```
+
+우리는 fflush\(\)의 주소를 실제 fflush\(\)로 넘기지 않고 다른 명령어 주소로 옮길 목적입니다. 위의 프로그램에서 가장 합리적으로 이동하기 좋은 곳은 system\(\)을 바로 호출하여서 바로 flag를 찾아내는 것이죠.
+
+지금까지의 내용을 정리하면 이렇습니다.
+
+* passcode1의 값\(주소\)에 scanf\(\)를 통해 입력 받는다
+* PLT를 통해 호출되는 fflush\(\) GOT를 변조하여 system\(\)을 호출한다.
+
+지금까지의 흐름을 정리하면 이렇습니다.
+
+1. name으로 100자를 입력받습니다. 이때 이후 passcode1이 될 name의 끝 4자리\(4byte\)는 PLT가 가리키는 GOT 주소입니다.
+2. 처음 scanf\("%d", passcode1\) 통해 passcode1이 가리키는 주소\(GOT 주소\)에 넣을 값은 system\(\)을 call하기 위한 0x080485e3이 됩니다. 그러나 scanf\(\) 정수형태를 입력받고 있으므로 0x080485e3를 10진수 형태로 바꿔서 입력하시면 됩니다. 
+> system\(\)을 call하기 위해서 
+```
+0x080485e3 <+127>: mov DWORD PTR [esp],0x80487af
+0x080485ea <+134>: call 0x8048460 <system@plt>
+```
+`0x080485ea <+134>`가 아니라 `0x080485e3 <+127>`인 이유는 `0x080485e3 <+127>`에서 `0x80487af`가 "/bin/cat flag"이기 때문에 인자를 전달하기 위해서 입니다.
+3. 첫번째 scanf\(\) 호출 이후 프로그램이 fflush\(\)를 call하면서 PLT를 통해 GOT를 넘어가서 참조하는 위치는 0x080485e3를 실행하게 되므로 flag를 얻을 수 있습니다.
 
 [^1]: 허락되지 않은 메모리에 쓰기를 시도할 때 나타나는 에러. 여기에서는 passcode1,2에 쓰레기 값이 들어있기 때문입니다.
 
