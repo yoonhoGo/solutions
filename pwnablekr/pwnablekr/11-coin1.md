@@ -9,52 +9,47 @@
 
 ## 소스
 
-```c
-#include <stdio.h>
+```txt
+        ---------------------------------------------------
+        -              Shall we play a game?              -
+        ---------------------------------------------------
 
-int main(){
-    unsigned int random;
-    random = rand();    // random value!
+        You have given some gold coins in your hand
+        however, there is one counterfeit coin among them
+        counterfeit coin looks exactly same as real coin
+        however, its weight is different from real one
+        real coin weighs 10, counterfeit coin weighes 9
+        help me to find the counterfeit coin with a scale
+        if you find 100 counterfeit coins, you will get reward :)
+        FYI, you have 30 seconds.
 
-    unsigned int key=0;
-    scanf("%d", &key);
+        - How to play -
+        1. you get a number of coins (N) and number of chances (C)
+        2. then you specify a set of index numbers of coins to be weighed
+        3. you get the weight information
+        4. 2~3 repeats C time, then you give the answer
 
-    if( (key ^ random) == 0xdeadbeef ){
-        printf("Good!\n");
-        system("/bin/cat flag");
-        return 0;
-    }
+        - Example -
+        [Server] N=4 C=2        # find counterfeit among 4 coins with 2 trial
+        [Client] 0 1            # weigh first and second coin
+        [Server] 20                     # scale result : 20
+        [Client] 3                      # weigh fourth coin
+        [Server] 10                     # scale result : 10
+        [Client] 2                      # counterfeit coin is third!
+        [Server] Correct!
 
-    printf("Wrong, maybe you should try 2^32 cases.\n");
-    return 0;
-}
+        - Ready? starting in 3 sec... -
 ```
 
 ## 취약점
 
-rand\(\)의 단점
+
 
 ## 힌트
 
-* 왜 우리는 rand\(\)를 안쓰고 srand\(\)를 사용할까요?
+
 
 ## 공략
-
-XOR 연산을 이용해서 KEY값을 구합니다.
-
-random 함수의 같은값이 나오는 취약점을 이용해서 풀이합니다.
-
-gdb 분석툴로 random 프로그램의 main함수 정보를 보면 범용레지스터 eax에 random값을 저장하는것을 알 수 있습니다.
-
-![](/assets/import11.png)
-
-random값 저장 주소부분에 Break point를 걸어주고
-
-eax 에 저장된 레지스트리 정보를 보면
-
-0x6b8b4567 이 저장되어있는것을 알 수 있습니다.
-
-XOR 연산을 통해 KEY값을 구해주면 됩니다.
-
-\(KEY = 0xdeadbeef ^ random\)
+서버에서 코인과 기회를 주면 입력을 반복해서 가짜코인(weight : 9)를 판별하는 프로그램입니다. 총 100개의 가짜코인을 판별하면 성공합니다.
+netcat과 socket 통신할 수 있는 스크립트를 만들어서 답을 구합니다.
 
