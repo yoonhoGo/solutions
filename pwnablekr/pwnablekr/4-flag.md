@@ -30,7 +30,7 @@ This is reversing task. all you need is binary
 
 ![](/assets/upx.png)
 
-* 실행파일을 패킹하는 툴중 하나인 UPX 사이트로 이동된걸 보아 바이너리 파일이 UPX라는 패킹툴로 패킹되었다는 사실을 알 수 있다.
+* 실행파일을 패킹하는 툴중 하나인 [UPX](https://goyunho.gitbooks.io/solutions/content/tools/upx.html) 사이트로 이동된걸 보아 바이너리 파일이 UPX라는 패킹툴로 패킹되었다는 사실을 알 수 있다.
 * UPX는 패킹기능과 언패킹 기능을 모두 제공하고 있다고 한다.
 * [https://github.com/upx/upx/releases/latest](https://github.com/upx/upx/releases/latest) 이 곳에서 UPX툴을 다운받아 패킹된 flag 파일을 언패킹한다.
 
