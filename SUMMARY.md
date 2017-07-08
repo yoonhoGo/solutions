@@ -14,6 +14,7 @@
 
 * [python](tools/python.md)
 * [GDB](tools/gdb.md)
+* [UPX](tools/upx.md)
 
 ## Wargames
 
