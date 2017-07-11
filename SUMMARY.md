@@ -29,5 +29,6 @@
   * [7 input](7-input.md)
   * [10 shellshock](pwnablekr/pwnablekr/10-shellshock.md)
   * [11 coin1](pwnablekr/pwnablekr/11-coin1.md)
+  * [12 blackjack](/pwnablekr/pwnablekr/12-blackjack.md)
   * [14 cmd1](pwnablekr/pwnablekr/14-cmd1.md)
 
