@@ -1,4 +1,4 @@
-## Blackjack
+# Blackjack
 
 ## 문제
 
@@ -833,12 +833,9 @@ int betting() //Asks user amount to bet
  }
  else return bet;
 } // End Function
-
 ```
 
 int betting\(\)에서 사용자가 베팅하는 금액\(bet\)이 갖고있는 금액\(cash\) 보다 큰 경우 다시 베팅을 하도록 되돌아가는데 if문-조건문을 사용하였기 때문에 한번만 체크를 하고 넘어감 -&gt; cash 보다 크게 적어 실패한 후에 원하는 금액으로 베팅하고 이기면 성공
-
-
 
 \( bet &lt; cash\) 에 대한 코드부분이 없기 때문에 음수의 베팅금액을 적어 게임에서 지면 성공
 
