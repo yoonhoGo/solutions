@@ -271,7 +271,7 @@ bf에서 찾을 주소는 거의다 찾은 것 같습니다. 이제 동적 라�
   (gdb) file bf_libc.so
   Reading symbols from bf_libc.so...(no debugging symbols found)...done.
   (gdb) x/i fgets
-     0x5d540 <fgets>:	push   %ebp
+     0x5d540 <fgets>:    push   %ebp
   (gdb) x/i system
      0x3a920 <system>:    sub    esp,0xc
   (gdb) x/i gets
@@ -303,6 +303,7 @@ got_memset   = 0x0804a02c
 main         = 0x08048671
 
 # bf_libc.so
+so_fgets    = 0x0005d540
 so_system   = 0x0003a920
 so_gets     = 0x0005e770
 
