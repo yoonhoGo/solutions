@@ -257,6 +257,7 @@ PLT&GOT exploit을 한다고 생각하고 main에서 실행된 @plt 함수들을
     0x80484cb <memset@plt+11>:    jmp    0x8048430
   ```
 * fgets@got.plt = 0x804a010
+
   ```
   (gdb) x/3i 0x8048450(혹은 fgets)
    0x8048450 <fgets@plt>:    jmp    DWORD PTR ds:0x804a010
@@ -264,15 +265,19 @@ PLT&GOT exploit을 한다고 생각하고 main에서 실행된 @plt 함수들을
    0x804845b <fgets@plt+11>:    jmp    0x8048430
   ```
 
-  bf에서 찾을 주소는 거의다 찾은 것 같습니다. 이제 동적 라이브러리에 있는 함수들을 찾아보죠. 문제에 포함된 bf\_libc.so를 불러옵니다. gdb를 나가고 새로 열으셔도 되지만 `file 파일명`으로 쉽게 불러올수 있습니다.
-  ```
+bf에서 찾을 주소는 거의다 찾은 것 같습니다. 이제 동적 라이브러리에 있는 함수들을 찾아보죠. 문제에 포함된 bf\_libc.so를 불러옵니다. gdb를 나가고 새로 열으셔도 되지만 file 파일명으로 쉽게 불러올수 있습니다.
+
+* ```
   (gdb) file bf_libc.so
   Reading symbols from bf_libc.so...(no debugging symbols found)...done.
+  (gdb) x/i fgets
+     0x5d540 <fgets>:	push   %ebp
   (gdb) x/i system
-   0x3a920 <system>:    sub    esp,0xc
+     0x3a920 <system>:    sub    esp,0xc
   (gdb) x/i gets
-   0x5e770 <gets>:    push   ebp
+     0x5e770 <gets>:    push   ebp
   ```
+* fgets = 0x5d540
 * system = 0x3a920
 * gets = 0x5e770
 
