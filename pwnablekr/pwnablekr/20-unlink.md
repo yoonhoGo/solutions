@@ -50,7 +50,6 @@ int main(int argc, char* argv[]){
         unlink(B);
         return 0;
 }
-
 ```
 
 ## 취약점
