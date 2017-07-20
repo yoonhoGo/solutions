@@ -20,10 +20,15 @@
 * info \[register\]
 
   * info register : [레지스터 ](/system/assembly-lang.md)보기
-  * i r \[레지스터\] : 특정 레지스터 보기
+  * i r \[레지스터\] : 특정 레지스터 보기
+  * 변수보기
+    * info variable : 전역/static 변수 보기
+    * info locals : 지역변수 보기(현재 스택 프레임에서)
+    * info args : 인수 보기(현재 스택 프레임에서)
+    * info symbol [주소] : 주소의 symbol 보기
 
 * x/\[옵션\] \[메모리위치\|레지스터\]  
-  예\)  `x/4xb $ebp`   `x/1xw 0x8048384`
+  예\)  `x/4xb $ebp`, `x/1xw 0x8048384`
 
   * 형식
     * o 8진법
